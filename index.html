@@ -21,25 +21,23 @@
         h1 span { color: #2bb673; display: block; }
         .nav-groups { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px; }
         .group-item { padding: 15px 25px; background: white; border: none; border-radius: 12px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .group-item:hover { transform: scale(1.02); box-shadow: 0 8px 25px rgba(43, 182, 115, 0.2); }
         .btn-posters { background: #2bb673 !important; color: white !important; margin-top: 10px; }
         .btn-back { background: rgba(43, 182, 115, 0.1); border: 1px solid #2bb673; color: #2bb673; padding: 6px 15px; border-radius: 50px; cursor: pointer; margin-bottom: 15px; font-family: 'Syncopate'; font-size: 0.55rem; font-weight: 700; width: fit-content; }
         .card-link { text-decoration: none; color: inherit; display: block; height: 100%; }
         .team-card { background: white; padding: 20px 15px; border-radius: 10px; border-left: 5px solid #2bb673; box-shadow: 0 3px 8px rgba(0,0,0,0.05); transition: 0.3s; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
         .card-link:hover .team-card { transform: translateY(-3px); background: #f9fff6; }
         .team-card.empty { opacity: 0.4; border-left-color: #ccc; }
-        .team-card h4 { font-weight: 800; font-size: 0.9rem; color: #2bb673; text-transform: uppercase; letter-spacing: 1px; }
+        .team-card h4 { font-weight: 800; font-size: 0.8rem; color: #2bb673; text-transform: uppercase; letter-spacing: 1px; }
         .file-list { flex-grow: 1; overflow-y: auto; padding-right: 15px; margin-top: 10px; }
         .file-group-label { background: rgba(43, 182, 115, 0.1); color: #2bb673; padding: 6px 12px; border-radius: 5px; font-weight: 800; font-size: 0.7rem; margin: 15px 0 8px 0; text-transform: uppercase; }
         .grid-posters { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 5px; }
 
-        /* --- NUEVO: PARCHE PARA PANTALLAS CHICAS (CELULAR) --- */
         @media (max-width: 768px) {
             body { flex-direction: column; overflow-y: auto; height: 100vh; }
             .visual-side { width: 100%; height: 35vh; flex-shrink: 0; }
-            .visual-side::after { background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent, #E7FFDB); }
             .interface-side { width: 100%; padding: 30px 20px; height: auto; }
             h1 { font-size: 2.2rem; text-align: center; }
-            .nav-groups { max-width: 100%; margin: 0 auto; }
             .grid-posters { grid-template-columns: 1fr; }
             #team-container { grid-template-columns: 1fr !important; }
         }
@@ -53,8 +51,17 @@
     </div>
 
     <div class="interface-side">
-        <div id="home" class="view active">
+<div id="home" class="view active">
             <h1>EXPO<span>GASTRO</span></h1>
+            
+            <div style="background: rgba(255,255,255,0.6); padding: 15px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #2bb673;">
+                <h3 style="font-family: 'Syncopate'; font-size: 0.8rem; color: #2bb673; margin-bottom: 5px;">PROPÓSITO</h3>
+                <p style="font-size: 0.85rem; line-height: 1.4; font-weight: 500;">
+                    Exhibir los proyectos integradores de los grupos de Gastronomía, destacando la investigación, 
+                    creatividad y el impacto social de cada equipo en el ciclo 2026.
+                </p>
+            </div>
+
             <div class="nav-groups">
                 <button class="group-item" onclick="showGroup('GA5-1')"><h3>GA5-1</h3> <span>→</span></button>
                 <button class="group-item" onclick="showGroup('GA5-2')"><h3>GA5-2</h3> <span>→</span></button>
@@ -63,7 +70,6 @@
                 <button class="group-item btn-posters" onclick="showView('posters')"><h3>CARTELES</h3> <span>★</span></button>
             </div>
         </div>
-
         <div id="details" class="view">
             <button class="btn-back" onclick="showView('home')">← VOLVER AL MENÚ</button>
             <h2 id="group-title" style="font-family: 'Syncopate'; font-size: 2.2rem; color: #2bb673; margin-bottom: 20px;"></h2>
@@ -87,63 +93,76 @@
             if(viewId === 'posters') { loadAllPosters(); }
         }
 
-        function loadAllPosters() {
+function loadAllPosters() {
             const list = document.getElementById('global-file-list');
-            const path = "archivos_carteles/";
-            const pathCC = "archivos_carteles/carteles cientificos/";
+            list.innerHTML = ""; // Limpieza total para que no queden "fantasmas"
+            
+            const p = "archivos_carteles/";
+            const pc = "archivos_carteles/carteles cientificos/";
             
             list.innerHTML = `
                 <div class="file-group-label">GRUPO GA 5-1</div>
                 <div class="grid-posters">
-                    <div class="team-card empty"><h4>EQUIPO 1</h4></div>
-                    <div class="team-card empty"><h4>EQUIPO 2</h4></div>
-                    <div class="team-card empty"><h4>EQUIPO 3</h4></div>
-                    <div class="team-card empty"><h4>EQUIPO 4</h4></div>
+                    <a href="${p}ga1_1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>
+                    <a href="${p}ga1_4.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>
                 </div>
+
                 <div class="file-group-label">GRUPO GA 5-2</div>
                 <div class="grid-posters">
-                    <a href="${path}ga52_equipo1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>
-                    <div class="team-card empty"><h4>EQUIPO 2</h4></div>
-                    <div class="team-card empty"><h4>EQUIPO 3</h4></div>
-                    <div class="team-card empty"><h4>EQUIPO 4</h4></div>
+                    <a href="${p}ga2_1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>
+                    <a href="${p}ga2_2.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>
+                    <a href="${p}ga2_3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>
+                    <a href="${p}ga2_4.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>
                 </div>
+
                 <div class="file-group-label">GRUPO GA 5-3</div>
                 <div class="grid-posters">
-                    <a href="${path}ga53_equipo1.jpeg" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>
-                    <a href="${path}ga53_equipo2.jpeg" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>
-                    <a href="${path}ga53_equipo3.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>
-                    <div class="team-card empty"><h4>EQUIPO 4</h4></div>
+                    <a href="${p}ga53_equipo1.jpeg" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>
+                    <a href="${p}ga53_equipo2.jpeg" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>
+                    <a href="${p}ga53_equipo3.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>
                 </div>
+
                 <div class="file-group-label">GRUPO GA 5-4</div>
                 <div class="grid-posters">
-                    <a href="${path}ga54_equipo1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>
-                    <a href="${path}ga54_equipo2.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>
-                    <a href="${path}ga54_equipo3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>
-                    <a href="${path}ga54_equipo4.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>
+                    <a href="${p}ga54_equipo2.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>
+                    <a href="${p}ga54_equipo3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>
+                    <a href="${p}ga54_equipo4.png" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>
                 </div>
+
                 <div class="file-group-label" style="background:#1a2e1a; color:white;">CARTELES CIENTÍFICOS</div>
                 <div class="grid-posters">
-                    <a href="${pathCC}animales_extincion.png" target="_blank" class="card-link"><div class="team-card" style="border-left-color:#ffc107"><h4>ANIMALES EXTINCIÓN</h4></div></a>
-                    <a href="${pathCC}ga53_equipo3_xd.jpg" target="_blank" class="card-link"><div class="team-card" style="border-left-color:#ffc107"><h4>GA53 EQUIPO 3</h4></div></a>
+                    <a href="${pc}comedor.jpg" target="_blank" class="card-link"><div class="team-card" style="border-left-color:#ffc107"><h4>PAPEL DEL COMEDOR</h4></div></a>
+                    <a href="${pc}proteccion_animales.pdf" target="_blank" class="card-link"><div class="team-card" style="border-left-color:#ffc107"><h4>PROTECCIÓN ANIMAL</h4></div></a>
                 </div>
             `;
         }
-
         function showGroup(name) {
             showView('details');
             document.getElementById('group-title').innerText = name;
             const container = document.getElementById('team-container');
+            const pg = "archivos_grupos/";
             let content = "";
-            for(let i=1; i<=4; i++) {
-                if(name === 'GA5-4' && i === 4) {
-                    content += `<a href="archivos_grupos/EQUIPO_4_GA5-4 _expocision.pdf" target="_blank" class="card-link">
-                        <div class="team-card"><h4>EQUIPO ${i}</h4></div>
-                    </a>`;
-                } else {
-                    content += `<div class="team-card empty"><h4>EQUIPO ${i}</h4></div>`;
-                }
+
+            if(name === 'GA5-1') {
+                content += `<a href="${pg}ga1_equipo1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>`;
+                content += `<a href="${pg}ga1_equipo3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>`;
+                content += `<a href="${pg}ga1_equipo4.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>`;
+            } else if(name === 'GA5-2') {
+                content += `<a href="${pg}ga2_equipo1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>`;
+                content += `<a href="${pg}ga2_equipo2.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>`;
+                content += `<a href="${pg}ga2_equipo3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>`;
+                content += `<a href="${pg}ga2_equipo4.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>`;
+            } else if(name === 'GA5-3') {
+                content += `<a href="${pg}ga3_equipo1.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 1</h4></div></a>`;
+                content += `<a href="${pg}ga3_equipo2.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>`;
+                content += `<a href="${pg}ga3_equipo3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>`;
+            } else if(name === 'GA5-4') {
+                content += `<a href="${pg}ga4_equipo2.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 2</h4></div></a>`;
+                content += `<a href="${pg}ga4_equipo3.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 3</h4></div></a>`;
+                content += `<a href="${pg}ga4_equipo4.pdf" target="_blank" class="card-link"><div class="team-card"><h4>EQUIPO 4</h4></div></a>`;
             }
-            container.innerHTML = content;
+
+            container.innerHTML = content || '<div class="team-card empty"><h4>PRÓXIMAMENTE</h4></div>';
         }
 
         const imgs = document.querySelectorAll('#gallery img');
