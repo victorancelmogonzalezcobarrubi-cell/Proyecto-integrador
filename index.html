@@ -52,24 +52,29 @@
 
     <div class="interface-side">
 <div id="home" class="view active">
-            <h1>EXPO<span>GASTRO</span></h1>
-            
-            <div style="background: rgba(255,255,255,0.6); padding: 15px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #2bb673;">
-                <h3 style="font-family: 'Syncopate'; font-size: 0.8rem; color: #2bb673; margin-bottom: 5px;">PROPÓSITO</h3>
-                <p style="font-size: 0.85rem; line-height: 1.4; font-weight: 500;">
-                    Exhibir los proyectos integradores de los grupos de Gastronomía, destacando la investigación, 
-                    creatividad y el impacto social de cada equipo en el ciclo 2026.
-                </p>
-            </div>
+    <img src="imagen/logo.jpg" alt="Logo Escuela" style="position: absolute; top: 20px; right: 20px; width: 80px; height: auto; opacity: 0.9;">
 
-            <div class="nav-groups">
-                <button class="group-item" onclick="showGroup('GA5-1')"><h3>GA5-1</h3> <span>→</span></button>
-                <button class="group-item" onclick="showGroup('GA5-2')"><h3>GA5-2</h3> <span>→</span></button>
-                <button class="group-item" onclick="showGroup('GA5-3')"><h3>GA5-3</h3> <span>→</span></button>
-                <button class="group-item" onclick="showGroup('GA5-4')"><h3>GA5-4</h3> <span>→</span></button>
-                <button class="group-item btn-posters" onclick="showView('posters')"><h3>CARTELES</h3> <span>★</span></button>
-            </div>
-        </div>
+    <h1 style="line-height: 1.1; margin-bottom: 20px; padding-right: 20px;">
+        <span style="font-size: 1.2rem; display: block; letter-spacing: 2px;">PATRIMONIO CULINARIO DE PETATLÁN</span>
+        <span style="font-size: 0.7rem; font-weight: 400; color: #2bb673; display: block; margin-top: 5px; font-family: 'Montserrat';">REPOSITORIO DE PROYECTOS TSU GASTRONOMÍA</span>
+    </h1>
+    
+    <div style="background: rgba(255,255,255,0.6); padding: 15px; border-radius: 12px; margin-bottom: 20px; border-left: 5px solid #2bb673;">
+        <h3 style="font-family: 'Syncopate'; font-size: 0.8rem; color: #2bb673; margin-bottom: 5px;">PROPÓSITO</h3>
+        <p style="font-size: 0.85rem; line-height: 1.4; font-weight: 500;">
+            Exhibir los proyectos integradores de los grupos de Gastronomía, destacando la investigación, 
+            creatividad y el impacto social de cada equipo en el ciclo 2026.
+        </p>
+    </div>
+
+    <div class="nav-groups">
+        <button class="group-item" onclick="showGroup('GA5-1')"><h3>GA5-1</h3> <span>→</span></button>
+        <button class="group-item" onclick="showGroup('GA5-2')"><h3>GA5-2</h3> <span>→</span></button>
+        <button class="group-item" onclick="showGroup('GA5-3')"><h3>GA5-3</h3> <span>→</span></button>
+        <button class="group-item" onclick="showGroup('GA5-4')"><h3>GA5-4</h3> <span>→</span></button>
+        <button class="group-item btn-posters" onclick="showView('posters')"><h3>CARTELES</h3> <span>★</span></button>
+    </div>
+</div>  
         <div id="details" class="view">
             <button class="btn-back" onclick="showView('home')">← VOLVER AL MENÚ</button>
             <h2 id="group-title" style="font-family: 'Syncopate'; font-size: 2.2rem; color: #2bb673; margin-bottom: 20px;"></h2>
